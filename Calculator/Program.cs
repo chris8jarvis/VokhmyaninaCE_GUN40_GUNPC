@@ -15,7 +15,7 @@
             Console.WriteLine("Not a number");
             return;
         }
-
+        
         Console.WriteLine("Enter a sign &, | or ^");
         var sign = Console.ReadLine();
         var boolSign = true;
