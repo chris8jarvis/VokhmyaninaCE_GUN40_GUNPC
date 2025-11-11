@@ -15,39 +15,54 @@
             Console.WriteLine("Not a number");
             return;
         }
+
+        //Console.WriteLine("Enter operation");
+        //Console.WriteLine("& - for bitwise AND");
+        //Console.WriteLine("| - for bitwise OR");
+        //Console.WriteLine("^ - for bitwise XOR");
+
         
-        Console.WriteLine("Enter a sign &, | or ^");
-        var sign = Console.ReadLine();
-        var boolSign = true;
-        if (sign.Length == 0 || sign.Length > 1 && !boolSign)
+        Console.WriteLine("1 - for bitwise AND");
+        Console.WriteLine("2 - for bitwise OR");
+        Console.WriteLine("3 - for bitwise XOR");
+
+        var operation = Console.ReadLine();
+
+        if (operation == null || operation.Length == 0 || operation.Length > 1)
         {
-            Console.WriteLine("Wrong sign");
+            Console.WriteLine("Wrong operation");
             return;
         }
 
-        switch (sign[0])
+
+        int decimalResult, binaryResult, hexResult;
+
+        switch (operation[0])
         {
-            case '&':
-                // Console.WriteLine("Result of {0} + {1} = {2}", number1 & number2);
-                  Console.WriteLine(Convert.ToString(number1 & number2, 10));
-                  Console.WriteLine(Convert.ToString(number1 & number2, 2));
-                  Console.WriteLine(Convert.ToString(number1 & number2, 16));
+            case '1':
+                decimalResult = number1 & number2;
+                binaryResult = number2 & number1;
+                hexResult = number1 & number2;
                 break;
-            case '|':
-                // Console.WriteLine("Result of {0} + {1} = {2}", number1 | number2);
-                Console.WriteLine(Convert.ToString(number1 | number2, 10));
-                Console.WriteLine(Convert.ToString(number1 | number2, 2));
-                Console.WriteLine(Convert.ToString(number1 | number2, 16));
+            case '2':
+                decimalResult = number1 | number2;
+                binaryResult = number1 | number2;
+                hexResult = number1 | number2;
                 break;
-            case '^':
-                // Console.WriteLine("Result of {0} + {1} = {2}", number1 ^ number2);
-                Console.WriteLine(Convert.ToString(number1 ^ number2, 10));
-                Console.WriteLine(Convert.ToString(number1 ^ number2, 2));
-                Console.WriteLine(Convert.ToString(number1 ^ number2, 16));
+            case '3':
+                decimalResult = number1 ^ number2;
+                binaryResult = number1 ^ number2;
+                hexResult = number1 ^ number2;
                 break;
             default:
-                Console.WriteLine("Wrong sign");
+                Console.WriteLine("Wrong operation, only &, | or ^ possible");
                 return;
         }
+
+        Console.WriteLine("decimal: " + Convert.ToString(decimalResult, 10));
+        Console.WriteLine("binary: " + Convert.ToString(binaryResult, 2));
+        Console.WriteLine("hexadecimal: " + Convert.ToString(hexResult, 16));
+    
+        }
+
     }
-}
