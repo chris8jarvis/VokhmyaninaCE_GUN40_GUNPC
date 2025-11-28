@@ -6,7 +6,6 @@ namespace HomeWork
     {
         static void Main(string[] args)
         {
-            // Console.WriteLine();
             Console.WriteLine("TASK 1");
 
             const int fibLength = 10;
@@ -40,6 +39,7 @@ namespace HomeWork
             }
             Console.WriteLine();
 
+            // alternative solution
             //for (int i = 2; i <= 20; i+=2)
             //{
             //    Console.Write($"{i} ");
@@ -50,13 +50,25 @@ namespace HomeWork
             Console.WriteLine();
             Console.WriteLine("TASK 3");
 
+            //for (int i = 1; i <= 5; i++)
+            //{
+
+            //    Console.Write($" x{i}: \t");
+            //    for (int j = 1; j <= 10; j++)
+            //    {
+            //        Console.Write($"{i * j} \t");
+            //    }
+            //    Console.WriteLine();
+            //}
+
+
             for (int i = 1; i <= 5; i++)
             {
 
-                Console.Write("1 x N: \t");
+                Console.WriteLine($" x{i}:");
                 for (int j = 1; j <= 10; j++)
                 {
-                    Console.Write($"{i * j} \t");
+                    Console.WriteLine($"{i} x {j} = {i * j} \t");
                 }
                 Console.WriteLine();
             }
@@ -67,21 +79,48 @@ namespace HomeWork
 
             string setPassword = "qwerty";
             Console.WriteLine("What's the password?");
-            string userInput = Console.ReadLine();
+            string userInput;// = Console.ReadLine();
 
             //while (userInput != setPassword)
             //{
             //    Console.WriteLine("Incorrect Password");
-            //    Console.ReadLine();
+            //    userInput = Console.ReadLine();
             //}
 
+            //do
+            //{
+            //    Console.WriteLine("Incorrect Password");
+            //    userInput = Console.ReadLine();
+            //}
+            //while (userInput != setPassword);
+
+            const int attemptsCount = 5;
+            int counter = 0;
+            bool isPasswordCorrect = false;
             do
             {
-                Console.WriteLine("Incorrect Password");
-                Console.ReadLine();
+                userInput = Console.ReadLine(); // вопрос ревьюверу, почему IDE подчеркивает эту строчку?
+
+                if (userInput != setPassword)
+                {
+                    Console.WriteLine("Incorrect Password.");
+                    counter++;
+                    continue;
+                }
+
+                isPasswordCorrect = true;
+
             }
-            while (userInput != setPassword);
-            
+            while (!isPasswordCorrect && counter < attemptsCount);
+
+            if (!isPasswordCorrect)
+            {
+                Console.WriteLine("Program is end, you exceed all attempts.");
+            }
+            else
+            {
+                Console.WriteLine("Program is end, you have successfully registrated.");
+            }
 
         }
     }
