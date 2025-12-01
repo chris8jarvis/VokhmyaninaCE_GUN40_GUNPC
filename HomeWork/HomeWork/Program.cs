@@ -50,78 +50,40 @@ namespace HomeWork
             Console.WriteLine();
             Console.WriteLine("TASK 3");
 
-            //for (int i = 1; i <= 5; i++)
-            //{
-
-            //    Console.Write($" x{i}: \t");
-            //    for (int j = 1; j <= 10; j++)
-            //    {
-            //        Console.Write($"{i * j} \t");
-            //    }
-            //    Console.WriteLine();
-            //}
-
-
             for (int i = 1; i <= 5; i++)
             {
 
-                Console.WriteLine($" x{i}:");
+                Console.Write($"x{i}:");
                 for (int j = 1; j <= 10; j++)
                 {
-                    Console.WriteLine($"{i} x {j} = {i * j} \t");
+                    Console.WriteLine($"\t{i} * {j} = {i * j}");
                 }
                 Console.WriteLine();
             }
+
 
             //////////////////////////////////////////////
             Console.WriteLine();
             Console.WriteLine("TASK 4");
 
-            string setPassword = "qwerty";
+            string passWord = "qwerty";
             Console.WriteLine("What's the password?");
-            string userInput;// = Console.ReadLine();
+            string userInput;
+            bool passwordAccurate = false;
 
-            //while (userInput != setPassword)
-            //{
-            //    Console.WriteLine("Incorrect Password");
-            //    userInput = Console.ReadLine();
-            //}
-
-            //do
-            //{
-            //    Console.WriteLine("Incorrect Password");
-            //    userInput = Console.ReadLine();
-            //}
-            //while (userInput != setPassword);
-
-            const int attemptsCount = 5;
-            int counter = 0;
-            bool isPasswordCorrect = false;
             do
             {
-                userInput = Console.ReadLine(); // вопрос ревьюверу, почему IDE подчеркивает эту строчку?
+                userInput = Console.ReadLine();
 
-                if (userInput != setPassword)
+                if (userInput != passWord)
                 {
-                    Console.WriteLine("Incorrect Password.");
-                    counter++;
+                    Console.WriteLine("Incorrect password");
                     continue;
-                }
-
-                isPasswordCorrect = true;
-
+                } 
+                passwordAccurate = true;
+                Console.WriteLine("Correct password");
             }
-            while (!isPasswordCorrect && counter < attemptsCount);
-
-            if (!isPasswordCorrect)
-            {
-                Console.WriteLine("Program is end, you exceed all attempts.");
-            }
-            else
-            {
-                Console.WriteLine("Program is end, you have successfully registrated.");
-            }
-
+            while (!passwordAccurate);
         }
     }
 }
