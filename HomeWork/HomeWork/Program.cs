@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Reflection.Metadata.Ecma335;
 using System.Xml.Serialization;
 
@@ -81,8 +82,88 @@ namespace HomeWork
             //drums.name = "drums";
             //drums.cost = 20000;
             //drums.Print();
+
+            Console.WriteLine();
+            Console.WriteLine($"//////////////////////////////////////");
+            Console.WriteLine($"Starting pointer example");
+            
+            int testInt = 777;
+            Console.WriteLine($"Inicialized value: \t {testInt}");
+
+            simpleFunc(testInt);
+            Console.WriteLine($"After simpleFunc: \t {testInt}");
+
+            int x = 9;
+            int rezult = simpleFuncWithReturn(testInt, x);
+
+            pointFunc(ref testInt); // escape
+            Console.WriteLine($"After directFunc: \t {testInt}");
+
+            int myValue = 777;
+            ref int pointVar1 = ref myValue;
+            
+            ref int pointVar2 = ref myValue;
+
+            Console.WriteLine($"1: \t {myValue}\t {pointVar1}\t {pointVar2}");
+
+            pointVar1 = 444;
+            Console.WriteLine($"2: \t {myValue}\t {pointVar1}\t {pointVar2}");
+
+            myValue = 123;
+            Console.WriteLine($"3: \t {myValue}\t {pointVar1}\t {pointVar2}");
+
+
+
+            Console.WriteLine($"-= Classes =-");
+            UltraClass Inst1 = new UltraClass();
+            UltraClass Inst2 = new UltraClass();
+
+            Inst1.Field = 11;
+            Inst2.Field = 22;
+            Console.WriteLine($"1: \t {Inst1.Field}\t {Inst2.Field}");
+
+            changeFieldToFive(Inst1);
+            Console.WriteLine($"2: \t {Inst1.Field}\t {Inst2.Field}");
+
+            Inst2.Field = Inst1.Field;
+            // Inst2 = Inst1; // так нельзя
+            Console.WriteLine($"2: \t {Inst1.Field}\t {Inst2.Field}");
+
+            clearField(Inst2);
+            Console.WriteLine($"2: \t {Inst1.Field}\t {Inst2.Field}");
         }
 
+        public static void simpleFunc(int myVar)
+        {
+            myVar = 666;
+        }
+
+        public static int simpleFuncWithReturn(int myVar, int x)
+        {
+            myVar = myVar * x;
+            x = 123;
+
+            return myVar;
+        }
+
+        public static void pointFunc(ref int myVar)
+        {
+            myVar = 555;
+        }
+
+        public static void changeFieldToFive(UltraClass myClass)
+        {
+            myClass.Field = 5;
+        }
+        public static void clearField(UltraClass myClass)
+        {
+            myClass.Field = 0;
+        }
+
+    }
+    class UltraClass
+    {
+        public int Field;
     }
 
     //class Test
